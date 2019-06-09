@@ -75,12 +75,27 @@ def my_plot(x, y, x_label='HMS'):
 		plt.plot(x,y)
 		return
 
+def prune_highlight(preds, tolerance):
+	new_preds=[]
+	prev_time=-61
+	for time in preds:
+		cur_time=time_to_int(time)
+		if(cur_time-prev_time<tolerance):
+			new_preds.pop()
+			new_preds.append(time)
+			prev_time=cur_time
+		else:
+			new_preds.append(time)
+			prev_time=cur_time
+
+	return new_preds
+
 def evaluate(preds, highlights, tolerance):
     ##check if datas are in right format
-	print("predictions")
-	print(preds)
-	print("highlights")
-	print(highlights)
+	#print("predictions")
+	#print(preds)
+	#print("highlights")
+	#print(highlights)
 
 	TP, FP, FN = 0, 0, 0
 	cur_highlights=copy.deepcopy(highlights)

@@ -102,6 +102,75 @@ class Log:
 	#prediction methods.
 	#input parameter: data
 	#return : list of candidates
+	def trendy(self, duration, threshold):
+		if(self.data_loaded()==False):
+			print("data not loaded")
+			return
+		
+		out=[]
+
+		total={}
+		current={}
+		cur_t=self.data[0][0]
+		for line in self.data:
+			if(line[0]!=cur_t):#new time
+				prev_t=cur_t
+				#prune duplicates
+				remove={}
+
+				for i, focus in enumerate(current):
+					for j, target in enumerate(current):
+						if (i>=j):
+							continue
+						if (target.find(focus)!=-1):
+							#if focus is part of target
+							#add to remove list
+							remove[focus]=target
+							continue
+				
+				for key, val in remove.items():
+					current[val]+=current[key]
+					del current[key]
+				#evaluate
+				for key, val in current.items(): #merge to total
+					if key in total:
+						total[key][-1]+=val
+					else:
+						total[key]=[0]*(duration-1) + [val]
+				
+				remove=[]
+				current={}
+
+				for key, val in total.items():
+					#check for elements not occuring right now
+					tot=sum(val)
+					if tot==0:
+						remove.append(key)
+					elif tot>=threshold:
+						out.append(time_to_int(line[0]))#found!
+				for item in remove:#delete words not occuring right now
+					del total[item]
+
+				
+				#update
+				cur_t=line[0]
+				diff=time_to_int(cur_t)-time_to_int(prev_t)
+				for word in total:#shift new slot
+					for a in range(diff):
+						total[word].pop(0)
+						total[word].append(0)
+			
+			words=line[2].split(' ')
+			for word in words:
+				if word in current:
+					current[word]+=1
+				else:
+					current[word]=1
+		return out
+			
+
+			
+
 	def word_bursts(self, words, threshold=20,duration=3):#words are in lists
 	#word in words is shown in min of 'threshold' in 'duration'
 		predictions=[]
@@ -166,11 +235,13 @@ class Log:
 			predictions=self.word_bursts(words=args.words, threshold=args.threshold, duration=args.duration)
 		elif(args.method=='rise'):
 			predictions=self.rise_without_down(step=args.step)
+		elif(args.method=='trendy'):
+			predictions=self.trendy(duration=args.duration, threshold=args.threshold)
 		else:
 			print("args.method is not recognized. given: {}".format(args.method))
 		predictions=seconds_to_HMS(predictions)
-		self.predictions=predictions
-		return predictions
+		self.predictions=prune_highlight(predictions, args.tol)
+		return self.predictions
 
 ##########################################################################
 ##########################################################################

@@ -30,8 +30,8 @@ def work(args):
 		L[-1].load_data(trim=True)
 		if(args.verbose):
 			print("done.")
-		if(args.offload==True):
-			L[-1].data=[]
+		#if(args.offload==True):
+		#	L[-1].data=[]
 	
 	Hpath=path+args.Hpath
 	HL=HLoader(Hpath, args.Hfile)
@@ -46,7 +46,7 @@ def work(args):
 			print("prediction: {}, threshold={}, duration={}".format(args.method, args.threshold, args.duration))
 			for i, f in enumerate(L):
 				if(args.verbose):
-					print(" predicting file {}/{} {}...".format(i, len(L), f.filename),end='')
+					print("predicting file {}/{} {}...".format(i, len(L), f.filename),end='')
 				sys.stdout.flush()
 				f.predict(args)
 				if(args.verbose):
@@ -67,24 +67,61 @@ def work(args):
 			else:
 				args.duration+=1
 			pTP, pFP, pFN=TP, FP, FN
-	else:
-		for i, f in enumerate(L):
-			if(args.verbose):
-				print(" predicting file {}/{} {}...".format(i, len(L), f.filename),end='')
-			sys.stdout.flush()
-			f.predict(args)
-			if(args.verbose):
-				print("done.")
+	elif(args.method=='rise'):
+		t=0
+		while t<10:
+			t+=1
+			for i, f in enumerate(L):
+				if(args.verbose):
+					print("predicting file {}/{} {}...".format(i, len(L), f.filename),end='')
+				sys.stdout.flush()
+				f.predict(args)
+				if(args.verbose):
+					print("done.")
 
-		preds=[]
-		for i in L:
-			f=[]
-			f.append(i.filename[:-4])
-			f.append(i.predictions)
-			preds.append(f)
+			preds=[]
+			for i in L:
+				f=[]
+				f.append(i.filename[:-4])
+				f.append(i.predictions)
+				preds.append(f)
 
-		TP, FP, FN = evaluate(preds, HL.data, args.tol)
-		print( TP, FP, FN)
+			TP, FP, FN = evaluate(preds, HL.data, args.tol)
+			if(FP>FN):
+				args.threshold+=5
+			elif(args.duration>1):
+				args.duration-=1
+			else:
+				args.duration+=1
+			pTP, pFP, pFN=TP, FP, FN
+
+	elif(args.method=='trendy'):
+		t=0
+		while t<10:
+			t+=1
+			for i, f in enumerate(L):
+				if(args.verbose):
+					print("predicting file {}/{} {}...".format(i, len(L), f.filename),end='')
+				sys.stdout.flush()
+				f.predict(args)
+				if(args.verbose):
+					print("done.")
+
+			preds=[]
+			for i in L:
+				f=[]
+				f.append(i.filename[:-4])
+				f.append(i.predictions)
+				preds.append(f)
+
+			TP, FP, FN = evaluate(preds, HL.data, args.tol)
+			if(FP>FN):
+				args.threshold+=5
+			elif(args.duration>1):
+				args.duration-=1
+			else:
+				args.duration+=1
+
 	
 
 if __name__ == "__main__":
@@ -129,7 +166,7 @@ if __name__ == "__main__":
 	args=parser.parse_args()
 
 	print(args)
-	if((args.method=='burst' or args.method=='rise') is False):
+	if((args.method=='burst' or args.method=='rise' or args.method=='trendy') is False):
 		print("feed for argument 'method' is unknown. Supported"+
 				"methods are 'burst' and 'rise'. Given value:{}".format(args.method))
 		quit()
