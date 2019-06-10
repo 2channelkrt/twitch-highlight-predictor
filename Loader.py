@@ -199,7 +199,7 @@ class Log:
 		if(func=='naive'):
 			time, freq=self.chat_frequency(plot=False)
 		elif(func=='mov_av'):
-			time, freq=self.chat_mov_average(window=50, plot=False)
+			time, freq=self.chat_mov_average(window=100, plot=False)
 		predictions=[]
 		combo=0
 		prev=0
@@ -229,18 +229,19 @@ class Log:
 
 	def predict(self,args):
 		if(self.data_loaded()==False):
-			print("Data not loaded")
-			return
+			self.load_data()
+			#print("Data not loaded")
 		if(args.method=='burst'):
 			predictions=self.word_bursts(words=args.words, threshold=args.threshold, duration=args.duration)
 		elif(args.method=='rise'):
-			predictions=self.rise_without_down(step=args.step)
+			predictions=self.rise_without_down(step=args.step, func=args.method2)
 		elif(args.method=='trendy'):
 			predictions=self.trendy(duration=args.duration, threshold=args.threshold)
 		else:
 			print("args.method is not recognized. given: {}".format(args.method))
 		predictions=seconds_to_HMS(predictions)
 		self.predictions=prune_highlight(predictions, args.tol)
+		self.data=[]
 		return self.predictions
 
 ##########################################################################

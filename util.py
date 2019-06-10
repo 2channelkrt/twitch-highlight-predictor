@@ -131,6 +131,6 @@ def evaluate(preds, highlights, tolerance):
 
 		last_file=h[0]
 	
-	print("TP: {}, FP: {}, TN: NaN, FN: {}".format(TP, FP, FN))
+	#print("TP: {}, FP: {}, TN: NaN, FN: {}".format(TP, FP, FN))
 	return (TP, FP, FN)
 

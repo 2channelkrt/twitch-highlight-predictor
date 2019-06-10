@@ -1,0 +1,62 @@
+rise, naive, step=1, TP: 5, FP: 1449, TN: NaN, FN: 73
+rise, naive, step=2, TP: 9, FP: 3359, TN: NaN, FN: 69
+rise, naive, step=3, TP: 54, FP: 9497, TN: NaN, FN: 26
+rise, naive, step=4, TP: 28, FP: 4659, TN: NaN, FN: 51
+rise, naive, step=5, TP: 9, FP: 1186, TN: NaN, FN: 69
+rise, naive, step=6, TP: 3, FP: 200, TN: NaN, FN: 75
+rise, naive, step=7, TP: 0, FP: 27, TN: NaN, FN: 78
+rise, naive, step=8, TP: 0, FP: 0, TN: NaN, FN: 78
+rise, naive, step=9, TP: 0, FP: 0, TN: NaN, FN: 78
+rise, naive, step=10, TP: 0, FP: 0, TN: NaN, FN: 78
+rises, mov_av window=30
+rise, mov_av, step=1, TP: 26, FP: 7937, TN: NaN, FN: 53
+rise, mov_av, step=2, TP: 62, FP: 12200, TN: NaN, FN: 19
+rise, mov_av, step=3, TP: 66, FP: 9037, TN: NaN, FN: 14
+rise, mov_av, step=4, TP: 62, FP: 5768, TN: NaN, FN: 17
+rise, mov_av, step=5, TP: 50, FP: 3396, TN: NaN, FN: 29
+rise, mov_av, step=6, TP: 35, FP: 1824, TN: NaN, FN: 44
+rise, mov_av, step=7, TP: 28, FP: 918, TN: NaN, FN: 51
+rise, mov_av, step=8, TP: 14, FP: 394, TN: NaN, FN: 65
+rise, mov_av, step=9, TP: 7, FP: 146, TN: NaN, FN: 72
+rise, mov_av, step=10, TP: 5, FP: 31, TN: NaN, FN: 73
+rises, mov_av window=50
+rise, mov_av, step=1, TP: 45, FP: 11578, TN: NaN, FN: 35
+rise, mov_av, step=2, TP: 71, FP: 10157, TN: NaN, FN: 10
+rise, mov_av, step=3, TP: 64, FP: 5845, TN: NaN, FN: 16
+rise, mov_av, step=4, TP: 54, FP: 3079, TN: NaN, FN: 25
+rise, mov_av, step=5, TP: 41, FP: 1507, TN: NaN, FN: 38
+rise, mov_av, step=6, TP: 25, FP: 716, TN: NaN, FN: 54
+rise, mov_av, step=7, TP: 19, FP: 293, TN: NaN, FN: 60
+rise, mov_av, step=8, TP: 7, FP: 95, TN: NaN, FN: 71
+rise, mov_av, step=9, TP: 4, FP: 24, TN: NaN, FN: 74
+rise, mov_av, step=10, TP: 0, FP: 5, TN: NaN, FN: 78
+rises, mov_av window=70
+rise, mov_av, step=1, TP: 53, FP: 11009, TN: NaN, FN: 27
+rise, mov_av, step=2, TP: 68, FP: 7634, TN: NaN, FN: 13
+rise, mov_av, step=3, TP: 55, FP: 3890, TN: NaN, FN: 24
+rise, mov_av, step=4, TP: 44, FP: 1744, TN: NaN, FN: 35
+rise, mov_av, step=5, TP: 37, FP: 774, TN: NaN, FN: 42
+rise, mov_av, step=6, TP: 22, FP: 344, TN: NaN, FN: 57
+rise, mov_av, step=7, TP: 12, FP: 151, TN: NaN, FN: 66
+rise, mov_av, step=8, TP: 7, FP: 42, TN: NaN, FN: 71
+rise, mov_av, step=9, TP: 4, FP: 10, TN: NaN, FN: 74
+rise, mov_av, step=10, TP: 0, FP: 2, TN: NaN, FN: 78
+rises, mov_av window=100
+rise, mov_av, step=1, TP: 64, FP: 10540, TN: NaN, FN: 16
+rise, mov_av, step=2, TP: 67, FP: 5605, TN: NaN, FN: 12
+rise, mov_av, step=3, TP: 46, FP: 2413, TN: NaN, FN: 33
+rise, mov_av, step=4, TP: 41, FP: 996, TN: NaN, FN: 38
+rise, mov_av, step=5, TP: 30, FP: 420, TN: NaN, FN: 49
+rise, mov_av, step=6, TP: 14, FP: 151, TN: NaN, FN: 65
+rise, mov_av, step=7, TP: 8, FP: 52, TN: NaN, FN: 71
+rise, mov_av, step=8, TP: 5, FP: 14, TN: NaN, FN: 74
+rise, mov_av, step=9, TP: 1, FP: 4, TN: NaN, FN: 78
+rise, mov_av, step=10, TP: 0, FP: 0, TN: NaN, FN: 78
+burst, dur=1, thsld=10, words=せせせ, TP: 42, FP: 1708, TN: NaN, FN: 38
+burst, dur=9, thsld=15, words=せせせ, TP: 26, FP: 7011, TN: NaN, FN: 53
+burst, dur=3, thsld=15, words=せせせ, TP: 42, FP: 3986, TN: NaN, FN: 38
+burst, dur=7, thsld=10, words=せせせ, TP: 21, FP: 7787, TN: NaN, FN: 57
+burst, dur=2, thsld=10, words=せせせ, TP: 41, FP: 4819, TN: NaN, FN: 39
+burst, dur=4, thsld=15, words=せせせ, TP: 38, FP: 5080, TN: NaN, FN: 42
+burst, dur=10, thsld=15, words=せせせ, TP: 26, FP: 7066, TN: NaN, FN: 53
+burst, dur=8, thsld=10, words=せせせ, TP: 20, FP: 7783, TN: NaN, FN: 58
