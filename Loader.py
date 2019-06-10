@@ -194,12 +194,12 @@ class Log:
 			#	break
 		return predictions
 
-	def rise_without_down(self, func='mov_av', step=5):
+	def rise_without_down(self, func='mov_av', step=5, window=50):
 		#'chat frequency per second' is continuously increasing for number of steps
 		if(func=='naive'):
 			time, freq=self.chat_frequency(plot=False)
 		elif(func=='mov_av'):
-			time, freq=self.chat_mov_average(window=100, plot=False)
+			time, freq=self.chat_mov_average(window=window, plot=False)
 		predictions=[]
 		combo=0
 		prev=0
@@ -234,7 +234,7 @@ class Log:
 		if(args.method=='burst'):
 			predictions=self.word_bursts(words=args.words, threshold=args.threshold, duration=args.duration)
 		elif(args.method=='rise'):
-			predictions=self.rise_without_down(step=args.step, func=args.method2)
+			predictions=self.rise_without_down(step=args.step, func=args.method2, window=args.window)
 		elif(args.method=='trendy'):
 			predictions=self.trendy(duration=args.duration, threshold=args.threshold)
 		else:

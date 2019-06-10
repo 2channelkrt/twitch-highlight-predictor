@@ -71,7 +71,7 @@ def work(args):
 			preds.append(f)
 
 		TP, FP, FN = evaluate(preds, HL.data, args.tol)
-		result="{}, {}, step={}, TP: {}, FP: {}, TN: NaN, FN: {}".format(args.method, args.method2, args.step, TP, FP, FN)
+		result="{}, {},window={}, step={}, TP: {}, FP: {}, TN: NaN, FN: {}".format(args.method, args.method2, args.window, args.step, TP, FP, FN)
 
 	elif(args.method=='trendy'):
 		for i, f in enumerate(L):
@@ -90,7 +90,7 @@ def work(args):
 			preds.append(f)
 
 		TP, FP, FN = evaluate(preds, HL.data, args.tol)
-		result="{}, dur={}, tsld={}, tol={}, TP: {}, FP: {}, TN: NaN, FN: {}".format(args.method, args.duration, args.threshold, args.tolerance, TP, FP, FN)
+		result="{}, dur={}, tsld={}, TP: {}, FP: {}, TN: NaN, FN: {}".format(args.method, args.duration, args.threshold, TP, FP, FN)
 
 	print(result)
 	ff=open('./result.txt', 'a')
@@ -138,6 +138,8 @@ if __name__ == "__main__":
 						It dramatically saves RAM, but every new predictions require another data load, which takes lot more time.\
 						If 'out of memory' error occurs, set to True. default is False. If you wish to set it 'False', do not mention.", default=False)
 	parser.add_argument('-method2', metavar='m2', type=str, help="method used by step method. supported are 'mov_av' and 'naive'. default is 'mov_av'", default='mov_av')
+	parser.add_argument('-window', metavar='w', type=int, help="only active when method is rise. this sets the window size for method2=mov_av. Dafault is 50", default=50)
+	
 
 	args=parser.parse_args()
 	

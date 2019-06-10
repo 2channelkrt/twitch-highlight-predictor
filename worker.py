@@ -4,13 +4,14 @@ from multiprocessing import Pool
 method=['rise', 'trendy', 'burst']
 step_method=['mov_av', 'naive']
 steps=[1,2,3,4,5,6,7,8,9,10]
+window=[10,30,50,70,100]
 
 
-threshold=[10,15,20,25,30,35,40,45,50]
+threshold=[10,20,30,40,50,60,70,80,90,100]
 duration=[1,2,3,4,5,6,7,8,9,10]
 
 def work(tt):
-    cmd='python main.py -method {} -threshold {} -duration {} -verbose True'.format('burst', tt[0], tt[1])
+    cmd='python main.py -method {} -threshold {} -duration {} -verbose True'.format('trendy', tt[0], tt[1])
     os.system(cmd)
     
 if __name__ == '__main__':
