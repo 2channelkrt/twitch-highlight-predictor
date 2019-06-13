@@ -248,3 +248,13 @@ trendy, dur=7, tsld=100, TP: 3, FP: 64, TN: NaN, FN: 75
 trendy, dur=10, tsld=90, TP: 10, FP: 136, TN: NaN, FN: 68
 trendy, dur=8, tsld=100, TP: 4, FP: 78, TN: NaN, FN: 74
 trendy, dur=1, tsld=100, TP: 0, FP: 2, TN: NaN, FN: 78
+rise, naive,window=50, step=3, TP: 53, FP: 9498, TN: NaN, FN: 26
+rise, naive,window=50, step=4, TP: 28, FP: 4659, TN: NaN, FN: 51
+rise, naive,window=50, step=2, TP: 9, FP: 3359, TN: NaN, FN: 69
+rise, naive,window=50, step=1, TP: 5, FP: 1449, TN: NaN, FN: 73
+rise, naive,window=50, step=5, TP: 9, FP: 1186, TN: NaN, FN: 69
+rise, naive,window=50, step=6, TP: 3, FP: 200, TN: NaN, FN: 75
+rise, naive,window=50, step=7, TP: 0, FP: 27, TN: NaN, FN: 78
+rise, naive,window=50, step=8, TP: 0, FP: 0, TN: NaN, FN: 78
+rise, naive,window=50, step=10, TP: 0, FP: 0, TN: NaN, FN: 78
+rise, naive,window=50, step=9, TP: 0, FP: 0, TN: NaN, FN: 78

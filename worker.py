@@ -11,7 +11,7 @@ threshold=[10,20,30,40,50,60,70,80,90,100]
 duration=[1,2,3,4,5,6,7,8,9,10]
 
 def work(tt):
-    cmd='python main.py -method {} -threshold {} -duration {} -verbose True'.format('trendy', tt[0], tt[1])
+    cmd='python main.py -method {} -method2 {} -step {} -verbose True'.format('rise', 'naive', tt[0])
     os.system(cmd)
     
 if __name__ == '__main__':
@@ -20,9 +20,8 @@ if __name__ == '__main__':
 
     works=[]
 
-    for t in threshold:
-        for d in duration:
-            works.append([t,d])
+    for step in duration:
+        works.append([step])
     
     pool.map(work, works)
     pool.close()
