@@ -1,4 +1,7 @@
-# WIP-twitch-highlight-estimator
-execute main.py -h for description
+# Twitch-highlight-estimator
+This program extracts highlights from Twitch streams via intensity of the viewer chat.
+Couple methodology for evaluating the chat intensity is available.
 
-scrap code has some tools for analyzing.
+execute 'main.py -h' for description
+
+Scrap code has some tools for analyzing/debugging purposes.
