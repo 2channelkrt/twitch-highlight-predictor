@@ -1,4 +1,4 @@
-# Twitch-highlight-estimator
+# Twitch-highlight-predictor
 This program extracts highlights from Twitch streams via intensity of the viewer chat.
 Couple methodology for evaluating the chat intensity is available.
 
